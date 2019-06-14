@@ -1,0 +1,21 @@
+version: '3.3'
+
+services:
+  iiost:
+    image: registry.ignitial.io/ignitial/iiost:${APP_VERSION}
+    container_name: iiost
+    ports:
+      - ${IIOS_DOCKER_EXPORTED_PORTS}
+    environment:
+      - REDIS_HOST=redis
+      - MONGODB_URI=mongodb://mongo:27017
+      - MONGODB_DBNAME=ignitialio
+      - IIOS_NAMESPACE=${IIOS_NAMESPACE}
+      - IIOS_SERVER_HOST=0.0.0.0
+      - IIOS_SERVER_PORT=${IIOS_SERVER_PORT}
+    networks:
+      infra:
+
+networks:
+  infra:
+    external: true
