@@ -13,5 +13,5 @@ export IIOS_NAMESPACE=ignitialio
 export IIOS_SERVER_PORT=20199
 export IIOS_DOCKER_EXPORTED_PORTS=$IIOS_SERVER_PORT:$IIOS_SERVER_PORT
 
-docker-compose stop
-docker-compose rm -f
+docker-compose -f docker-compose-dev.yml stop
+docker-compose -f docker-compose-dev.yml rm -f

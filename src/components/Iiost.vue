@@ -1,5 +1,6 @@
 <template>
   <div :id="id" class="iiost-layout">
+    {{ $t('Insert here your own UI components') }}
   </div>
 </template>
 
@@ -15,7 +16,6 @@ export default {
 
   },
   methods: {
-
   },
   mounted() {
 
@@ -29,6 +29,6 @@ export default {
 <style>
   .iiost-layout {
     width: 100%;
-    height: 100%;
+    height: calc(100% - 0px);
   }
 </style>

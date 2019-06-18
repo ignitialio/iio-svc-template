@@ -37,6 +37,25 @@ module.exports = {
   },
   /* access control: if present, acces control enabled */
   accesscontrol: {
+    /* access control namespace */
+    namespace: process.env.IIOS_NAMESPACE || 'iios',
+    /* grants for current service: auto-fill */
+    grants: {
+      admin: {
+        'create:any': [ '*' ],
+        'read:any': [ '*' ],
+        'update:any': [ '*' ],
+        'delete:any': [ '*' ]
+      },
+      user: {
+        'read:any': [ '*' ],
+        'update:any': [ '*' ],
+        'delete:any': [ '*' ]
+      },
+      anonymous: {
+        'read:any': [ '*' ]
+      }
+    },
     /* connector configuration: optional, default same as global connector, but
        on DB 1 */
     connector: {
@@ -75,6 +94,9 @@ module.exports = {
         'My amazing component': [ 'Mon super composant' ],
         'Provides uber crazy services':  [
           'Fournit des services super hyper dingues'
+        ],
+        'Insert here your own UI components': [
+          'Insérer ici vos propres composants'
         ]
       },
       /* eventually any other data */

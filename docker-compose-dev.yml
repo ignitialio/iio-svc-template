@@ -4,6 +4,8 @@ services:
   iiost:
     image: registry.ignitial.io/ignitial/iiost:${APP_VERSION}
     container_name: iiost
+    volumes:
+      - ${PWD}:/opt/iiost
     ports:
       - ${IIOS_DOCKER_EXPORTED_PORTS}
     environment:

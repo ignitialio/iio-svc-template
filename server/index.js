@@ -9,15 +9,24 @@ class Iiost extends Service {
   }
 
   // provides some services here
-  oneServiceMethod(args) {
+  // ***************************************************************************
+  oneGetServiceMethod(args) {
+    /* @_GET_ */
     return new Promise((resolve, reject) => {
-      resolve({ somedata: 'some value' })
+      resolve({ somedata: 'some value', args: args })
+    })
+  }
+
+  onePostServiceMethod(args) {
+    /* @_POST_ */
+    return new Promise((resolve, reject) => {
+      resolve({ somedata: 'some value', args: args })
     })
   }
 }
 
 // instantiate service with its configuration
-let iiost = new Iiost(config)
+const iiost = new Iiost(config)
 
 iiost._init().then(() => {
   console.log('service [' + this._name + '] initialization done')
