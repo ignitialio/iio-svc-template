@@ -29,7 +29,8 @@ class Iiost extends Service {
 const iiost = new Iiost(config)
 
 iiost._init().then(() => {
-  console.log('service [' + this._name + '] initialization done')
+  console.log('service [' + iiost.name + '] initialization done with options ',
+    iiost._options)
 }).catch(err => {
   console.error('initialization failed', err)
   process.exit(1)
