@@ -12,9 +12,10 @@ The following _npm run_ targets are available:
 - _dev:stop_: stops and cleans up development service container
 - _prod:start_: starts production service container
 - _prod:stop_: stops and cleans up production service container
-- _docker:build_: builds Docker image for the service
-- _docker:publish_: publishes Docker image to a Docker registry (_registry.ignitial.io_
+- _docker:publish:private_: publishes Docker image to an eventually private Docker registry (_registry.ignitial.io_
   is private: you must change this, unless we gave you an access to it)  
+- _docker:publish:public_: publishes Docker image to Docker Hub registry (_ignitial/_
+  means that this uses _ignitial_: you must change this, unless we gave you an access to it)
 
 ## Develop
 
@@ -26,4 +27,4 @@ dependencies that work with webpack, if used client side.
 ## Testing
 
 In the coming versions it will be possible to test service within a web app context
-thansk to _@ignitial/iios-app-client_ and _@ignitial/iios-app-server_ libs.
+thanks to _@ignitial/iios-app-client_ and _@ignitial/iios-app-server_ libs.
