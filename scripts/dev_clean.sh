@@ -15,3 +15,15 @@ export IIOS_DOCKER_EXPORTED_PORTS=$IIOS_SERVER_PORT:$IIOS_SERVER_PORT
 
 docker-compose -f docker-compose-dev.yml stop
 docker-compose -f docker-compose-dev.yml rm -f
+
+# if command -v iio 2>/dev/null; then
+#   iio infra dev --rm
+#   if [ $? -ne 0 ]
+#   then
+#     echo "iio version must be >=2.2.1: 'npm i -g @ignitial/iio-cli'"
+#     exit 1
+#   fi
+# else
+#   echo "iio not installed: 'npm i -g @ignitial/iio-cli'"
+#   exit 1
+# fi

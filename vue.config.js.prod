@@ -27,7 +27,6 @@ module.exports = {
   chainWebpack: config => {
     config.externals({
       'vue': 'Vue',
-      'core-js': 'core-js',
       'pino': 'pino'
     })
   }

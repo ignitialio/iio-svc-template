@@ -97,6 +97,9 @@ module.exports = {
         ],
         'Insert here your own UI components': [
           'Insérer ici vos propres composants'
+        ],
+        'Iiost Service view': [
+          'Vue du service Iiost'
         ]
       },
       /* eventually any other data */

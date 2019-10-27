@@ -11,10 +11,10 @@ global.iios_iiost = function(Vue) {
   Vue.prototype.$services.emit('app:menu:add', [
     {
       path: '/myservicepath',
-      title: 'Service view',
-      icon: 'view',
+      title: 'Iiost Service view',
+      icon: 'view_comfy',
       anonymousAccess: true,
-      hideIfLogged: true,
+      hideIfLogged: false,
       route: {
         path: '/myservicepath',
         component: Iiost

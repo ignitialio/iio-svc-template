@@ -1,5 +1,17 @@
 #!/bin/sh
 
+if command -v iio 2>/dev/null; then
+  iio infra dev
+  if [ $? -ne 0 ]
+  then
+    echo "iio version must be >=2.2.1: 'npm i -g @ignitial/iio-cli'"
+    exit 1
+  fi
+else
+  echo "iio not installed: 'npm i -g @ignitial/iio-cli'"
+  exit 1
+fi
+
 export APP_VERSION=$(cat package.json \
   | grep version \
   | head -1 \
@@ -10,7 +22,7 @@ export APP_VERSION=$(cat package.json \
 echo "app version: ${APP_VERSION}"
 
 export IIOS_NAMESPACE=ignitialio
-export IIOS_SERVER_PORT=20199
+export IIOS_SERVER_PORT=20399
 export IIOS_DOCKER_EXPORTED_PORTS=$IIOS_SERVER_PORT:$IIOS_SERVER_PORT
 
 docker-compose -f docker-compose-dev.yml up -d
