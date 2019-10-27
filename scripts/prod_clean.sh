@@ -1,14 +1,14 @@
 
 #!/bin/sh
 
-export APP_VERSION=$(cat package.json \
+export SVC_VERSION=$(cat package.json \
   | grep version \
   | head -1 \
   | awk -F: '{ print $2 }' \
   | sed 's/[",]//g' \
   | tr -d '[[:space:]]')
 
-echo "app version: ${APP_VERSION}"
+echo "app version: ${SVC_VERSION}"
 
 export IIOS_NAMESPACE=ignitialio
 export IIOS_SERVER_PORT=20199

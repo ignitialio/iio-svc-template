@@ -2,7 +2,7 @@ version: '3.3'
 
 services:
   iiost:
-    image: ignitial/iiost:${APP_VERSION}
+    image: ignitial/iiost:${SVC_VERSION}
     container_name: iiost
     ports:
       - ${IIOS_DOCKER_EXPORTED_PORTS}

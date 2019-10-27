@@ -7,15 +7,16 @@ The following _npm run_ targets are available:
 - _client:build_: builds service client source code (using webpack)
 - _server:start_: starts service server side
 - _dev:standalone_: runs service without Docker container
-- _dev:start_: starts production service container (uses local source code, not
-  image's one)
-- _dev:stop_: stops and cleans up development service container
+- _dev:start_: starts development containers, including IIOS application for intergrated testing
+- _dev:stop_: stops and cleans up development deployment
 - _prod:start_: starts production service container
 - _prod:stop_: stops and cleans up production service container
+- _docker:build:minikub_: buils Docker image directly inside minikube environment (minikube must be installed and started)
 - _docker:publish:private_: publishes Docker image to an eventually private Docker registry (_registry.ignitial.io_
   is private: you must change this, unless we gave you an access to it)  
 - _docker:publish:public_: publishes Docker image to Docker Hub registry (_ignitial/_
   means that this uses _ignitial_: you must change this, unless we gave you an access to it)
+- _docker:publish:minikube_: publishes Docker image to local minikube (copy existing image instead of building it)
 
 ## Develop
 
@@ -24,7 +25,11 @@ Add server files in the _server_ folder and client ones in _src_.
 You can add any dependency thanks to _npm_. The only constraint is to have
 dependencies that work with webpack, if used client side.
 
-## Testing
+You can run development environment as below:
 
-In the coming versions it will be possible to test service within a web app context
-thanks to _@ignitial/iios-app-client_ and _@ignitial/iios-app-server_ libs.
+```bash
+npm run dev:start
+
+# then stop it and remove related containers
+npm run dev:stop
+```
