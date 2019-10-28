@@ -4,27 +4,30 @@ module.exports = {
   // where to output built files
   outputDir: 'dist',
 
-  devServer: {
-    inline: false,
-    proxy: {
-      '/socket.io': {
-        target: 'http://localhost:' + process.env.IIOS_SERVER_PORT + '/socket.io',
-        ws: true
-      },
-      '/api': {
-        target: 'http://localhost:' + process.env.IIOS_SERVER_PORT,
-      }
-    },
-    https: false
-  },
-
   configureWebpack: {
     output: {
       publicPath: '/',
-      filename: 'build.js'
+      filename: 'build.js',
+      chunkFilename: 'chunks.js',
+      library: 'iiost',
+      libraryTarget: 'umd'
     },
     entry: {
-      app: './test/main.js'
+      app: './src/index.js'
     }
+  },
+
+  css: {
+    extract: {
+      filename: 'build.css',
+      chunkFilename: '[name].css',
+    },
+  },
+
+  chainWebpack: config => {
+    config.externals({
+      'vue': 'Vue',
+      'pino': 'pino'
+    })
   }
 }

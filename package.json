@@ -15,12 +15,22 @@
     "access control"
   ],
   "license": "MIT",
+  "watch": {
+    "dev:hr:reload": {
+      "patterns": ["src", "components", "css"],
+      "extensions": "js,vue,css",
+      "runOnChangeOnly": false
+    }
+  },
   "scripts": {
+    "watch": "npm-watch",
     "client:serve": "vue-cli-service serve",
     "client:build": "vue-cli-service build",
     "server:start": "node ./server/index.js",
     "dev:standalone": "npm-run-all --parallel server:start client:serve",
     "dev:start": "./scripts/dev_start.sh",
+    "dev:hr:reload": "npm run client:build && docker stop iiost && sleep 2 && docker start iiost",
+    "dev:hr:start": "npm run client:build && npm-run-all --parallel watch dev:start",
     "dev:stop": "./scripts/dev_clean.sh",
     "prod:start": "./scripts/prod_start.sh",
     "prod:stop": "./scripts/prod_clean.sh",
@@ -37,6 +47,7 @@
     "@vue/cli-plugin-babel": "^3.12.1",
     "@vue/cli-service": "^3.12.1",
     "npm-run-all": "^4.1.5",
+    "npm-watch": "^0.6.0",
     "sass": "^1.23.1",
     "sass-loader": "^7.3.1",
     "vue": "^2.6.10",

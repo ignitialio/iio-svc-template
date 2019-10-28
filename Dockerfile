@@ -6,8 +6,6 @@ ADD . /opt/iiost
 
 WORKDIR /opt/iiost
 
-RUN mv vue.config.js.prod vue.config.js
-
 RUN npm install && npm run client:build
 
 CMD ["node", "./server/index.js"]

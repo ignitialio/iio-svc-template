@@ -8,6 +8,8 @@ The following _npm run_ targets are available:
 - _server:start_: starts service server side
 - _dev:standalone_: runs service without Docker container
 - _dev:start_: starts development containers, including IIOS application for intergrated testing
+- _dev:hr:start_: starts development containers with sort of hot reaload
+- _dev:hr:reload_: used for restarting container on reload trig: do not use it directly
 - _dev:stop_: stops and cleans up development deployment
 - _prod:start_: starts production service container
 - _prod:stop_: stops and cleans up production service container
@@ -33,3 +35,9 @@ npm run dev:start
 # then stop it and remove related containers
 npm run dev:stop
 ```
+
+## Known issues
+
+- Hot reload needs a delay when restarting container: service discovery inverts
+destroy and create message if no delay: hot reload needs more than 2 seconds to
+operate (~5s on core i7)
