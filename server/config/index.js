@@ -2,6 +2,7 @@
 // -----------------------------------------------------------------------------
 const IIOS_REDIS_PORT = process.env.IIOS_REDIS_PORT ? parseInt(process.env.IIOS_REDIS_PORT) : 6379
 const IIOS_REDIS_DB = process.env.IIOS_REDIS_DB ? parseInt(process.env.IIOS_REDIS_DB) : 0
+const IIOS_REDIS_ACCESSDB = process.env.IIOS_REDIS_ACCESSDB || 1
 let IIOS_REDIS_SENTINELS
 
 if (process.env.IIOS_REDIS_SENTINELS) {
