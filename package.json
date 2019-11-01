@@ -1,5 +1,5 @@
 {
-  "name": "iiost-service",
+  "name": "@ignitial/iio-svc",
   "version": "1.0.0",
   "main": "server/index.js",
   "repository": "git@github.com:ignitialio/iio-svc-template.git",
@@ -17,7 +17,11 @@
   "license": "MIT",
   "watch": {
     "dev:hr:reload": {
-      "patterns": ["src", "components", "css"],
+      "patterns": [
+        "src",
+        "components",
+        "css"
+      ],
       "extensions": "js,vue,css",
       "runOnChangeOnly": false
     }
@@ -41,7 +45,7 @@
     "docker:publish:minikube": "docker save ignitial/iiost:${npm_package_version} | (eval $(minikube docker-env) && docker load)"
   },
   "dependencies": {
-    "@ignitial/iio-services": "^2.2.5"
+    "@ignitial/iio-services": "^2.2.8"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.12.1",
