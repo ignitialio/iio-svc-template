@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: iiost
+  labels:
+    app: iiost
+spec:
+  replicas: "{{$.iios.app.replicas}}"
+  selector:
+    matchLabels:
+      app: iiost
+  template:
+    metadata:
+      labels:
+        app: iiost
+    spec:
+      containers:
+      - name: iiost
+        image: "ignitial/iiost:{{$.iios.app.version}}"
+        imagePullPolicy: "{{$.iios.app.imagePullPolicy}}"
+        volumeMounts:
+        - name: config-volume
+          mountPath: /opt/iiost/server/config/generated
+        ports: "{{$.iios.app.ports}}"
+        env:
+          - name: IIOS_NAMESPACE
+            value: "{{$.iios.namespace}}"
+          - name: IIOS_SERVER_HOST
+            value: "iiost.default.svc.cluster.local"
+          - name: IIOS_SERVER_PORT
+            value: "{{str($.iios.app.ports[0].containerPort)}}"
+          - name: IIOS_REDIS_HOST
+            value: "redis.default.svc.cluster.local"
+          - name: IIOS_REDIS_PORT
+            value: "6379"
+      imagePullSecrets:
+        - name: regcred
+      volumes:
+        - name: config-volume
+          configMap:
+            name: iiost-config
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: iiost
+spec:
+  selector:
+    app: iiost
+  ports:
+  - name: http
+    port: "{{$.iios.app.ports[0].containerPort}}"
+    targetPort: "{{$.iios.app.ports[0].containerPort}}"

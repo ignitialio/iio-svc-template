@@ -1,3 +1,35 @@
+const fs = require('fs')
+const path = require('path')
+const YAML = require('yaml')
+
+function envBrowseAndReplace(config) {
+  for (let prop in config) {
+    if (typeof config[prop] !== 'string' && typeof config[prop] !== 'number') {
+      config[prop] = envBrowseAndReplace(config[prop])
+    } else {
+      if (typeof config[prop] === 'string') {
+        let envVarMatch = config[prop].match(/env\((.*?)\)/)
+        if (envVarMatch) {
+          config[prop] = process.env[envVarMatch[1]]
+        }
+      }
+    }
+  }
+
+  return config
+}
+
+let generatedConfigPath = path.join(process.cwd(), 'server', 'config', 'generated', 'config.json')
+if (fs.existsSync(generatedConfigPath)) {
+  let config = JSON.parse(fs.readFileSync(generatedConfigPath, 'utf8'))
+  config = envBrowseAndReplace(config)
+  console.log('WARNING: using YAML configuration')
+  module.exports = config
+  return
+}
+
+console.log('WARNING: generated file [' + generatedConfigPath + '] does not exist. switch to env config')
+
 // REDIS configuration
 // -----------------------------------------------------------------------------
 const IIOS_REDIS_PORT = process.env.IIOS_REDIS_PORT ? parseInt(process.env.IIOS_REDIS_PORT) : 6379
@@ -38,7 +70,7 @@ module.exports = {
   /* access control: if present, acces control enabled */
   accesscontrol: {
     /* access control namespace */
-    namespace: process.env.IIOS_NAMESPACE || 'iios',
+    namespace: process.env.IIOS_NAMESPACE || 'ignitialio',
     /* grants for current service: auto-fill */
     grants: {
       admin: {

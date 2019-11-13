@@ -3,3 +3,10 @@ node_modules
 .DS_Store
 /dist
 /sdist
+
+# generated
+server/config/generated
+
+# k8s
+k8s/deploy
+k8s/kustomizations/config

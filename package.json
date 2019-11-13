@@ -33,19 +33,24 @@
     "server:start": "node ./server/index.js",
     "dev:standalone": "npm-run-all --parallel server:start client:serve",
     "dev:start": "./scripts/dev_start.sh",
+    "dev:start:full": "./scripts/dev_start.sh full",
     "dev:hr:reload": "npm run client:build && docker stop iiost && sleep 2 && docker start iiost",
     "dev:hr:start": "npm run client:build && npm-run-all --parallel watch dev:start",
     "dev:stop": "./scripts/dev_clean.sh",
+    "dev:stop:full": "./scripts/dev_clean.sh full",
     "prod:start": "./scripts/prod_start.sh",
     "prod:stop": "./scripts/prod_clean.sh",
     "docker:build": "docker build --rm -t ignitial/iiost . && docker tag ignitial/iiost registry.gitlab.com/ignitial && docker tag ignitial/iiost registry.gitlab.com/ignitial/iiost:${npm_package_version} && docker tag ignitial/iiost ignitial/iiost:${npm_package_version}",
     "docker:build:minikube": "eval $(minikube docker-env) && npm run docker:build",
     "docker:publish:private": "docker push registry.gitlab.com/ignitial/iiost && docker push registry.gitlab.com/ignitial/iiost:${npm_package_version}",
     "docker:publish:public": "docker push ignitial/iiost && docker push ignitial/iiost:${npm_package_version}",
-    "docker:publish:minikube": "docker save ignitial/iiost:${npm_package_version} | (eval $(minikube docker-env) && docker load)"
+    "docker:publish:minikube": "docker save ignitial/iiost:${npm_package_version} | (eval $(minikube docker-env) && docker load)",
+    "k8s:deploy": "k8s/k8s-deploy.sh",
+    "k8s:remove": "k8s/k8s-remove.sh"
   },
   "dependencies": {
-    "@ignitial/iio-services": "^2.2.8"
+    "@ignitial/iio-services": "^2.2.8",
+    "yaml": "^1.7.2"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.12.1",

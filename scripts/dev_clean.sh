@@ -25,8 +25,15 @@ export IIOS_S3_ACCESS_KEY_ID=G4I3RZP3I2AS7EMWQPMZ
 export IIOS_S3_SECRET_ACCESS_KEY=xMzrrXMtnFEOP/K7MDFRA/bPxRfiCYEXOTOTOYEK
 export IIOS_EMAILER_SMTP_PASS=toto
 
-docker-compose -f docker-compose-dev.yml stop
-docker-compose -f docker-compose-dev.yml rm -f
+if [ -z "$1" ]; then
+  echo "stop svc only"
+  docker-compose -f docker/docker-compose-dev.yml stop iiost
+  docker-compose -f docker/docker-compose-dev.yml rm -f iiost
+else
+  echo "stop full docker deploy"
+  docker-compose -f docker/docker-compose-dev.yml stop
+  docker-compose -f docker/docker-compose-dev.yml rm -f
+fi
 
 # if command -v iio 2>/dev/null; then
 #   iio infra dev --rm

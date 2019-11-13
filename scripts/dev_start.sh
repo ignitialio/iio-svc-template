@@ -22,6 +22,7 @@ export SVC_VERSION=$(cat package.json \
 
 echo "app version: ${SVC_VERSION}"
 
+export IIOS_SERVER_HOST=0.0.0.0
 export IIOS_SERVER_PORT=20399
 export IIOS_DOCKER_EXPORTED_PORTS=$IIOS_SERVER_PORT:$IIOS_SERVER_PORT
 
@@ -38,4 +39,10 @@ export IIOS_S3_ACCESS_KEY_ID=G4I3RZP3I2AS7EMWQPMZ
 export IIOS_S3_SECRET_ACCESS_KEY=xMzrrXMtnFEOP/K7MDFRA/bPxRfiCYEXOTOTOYEK
 export IIOS_EMAILER_SMTP_PASS=toto
 
-docker-compose -f docker-compose-dev.yml up -d
+if [ -z "$1" ]; then
+  echo "start svc only"
+  docker-compose -f docker/docker-compose-dev.yml up -d iiost
+else
+  echo "start full docker deploy"
+  docker-compose -f docker/docker-compose-dev.yml up -d
+fi
