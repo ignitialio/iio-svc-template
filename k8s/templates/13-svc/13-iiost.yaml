@@ -22,17 +22,6 @@ spec:
         - name: config-volume
           mountPath: /opt/iiost/server/config/generated
         ports: "{{$.iios.app.ports}}"
-        env:
-          - name: IIOS_NAMESPACE
-            value: "{{$.iios.namespace}}"
-          - name: IIOS_SERVER_HOST
-            value: "iiost.default.svc.cluster.local"
-          - name: IIOS_SERVER_PORT
-            value: "{{str($.iios.app.ports[0].containerPort)}}"
-          - name: IIOS_REDIS_HOST
-            value: "redis.default.svc.cluster.local"
-          - name: IIOS_REDIS_PORT
-            value: "6379"
       imagePullSecrets:
         - name: regcred
       volumes:

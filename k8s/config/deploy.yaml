@@ -14,7 +14,7 @@ iios:
     registry: "{{$.registries.Local}}"
     replicas: 1
     ports:
-      - containerPort: 20194
+      - containerPort: 20499
         name: iiost-service
     imagePullPolicy: IfNotPresent
 cluster:
