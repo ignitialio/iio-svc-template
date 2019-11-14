@@ -40,6 +40,16 @@ npm run dev:start:full
 npm run dev:stop:full
 ```
 
+You can use hot reload for client side as below:
+
+```bash
+npm run dev:start:hr
+
+# then stop it and remove related containers
+# ^CTRL-C
+npm run dev:stop:full
+```
+
 ## Known issues
 
 - Hot reload needs a delay when restarting container: service discovery inverts
