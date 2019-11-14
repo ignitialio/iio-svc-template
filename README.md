@@ -30,10 +30,11 @@ dependencies that work with webpack, if used client side.
 You can run development environment as below:
 
 ```bash
-npm run dev:start
+npm run docker:build
+npm run dev:start:full
 
 # then stop it and remove related containers
-npm run dev:stop
+npm run dev:stop:full
 ```
 
 ## Known issues
