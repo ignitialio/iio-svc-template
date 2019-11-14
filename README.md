@@ -30,7 +30,10 @@ dependencies that work with webpack, if used client side.
 You can run development environment as below:
 
 ```bash
-npm run docker:build # only first time, since volume mounted on local folder
+# only first time, or changes for server part, since client volume is mounted
+# based on local folder
+npm run docker:build
+
 npm run dev:start:full
 
 # then stop it and remove related containers
