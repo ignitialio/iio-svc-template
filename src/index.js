@@ -14,7 +14,7 @@ global.iios_iiost = function(Vue) {
         path: '/service-iiost',
         title: 'Iiost Service view',
         icon: 'view_comfy',
-        service: true,
+        section: 'Services',
         anonymousAccess: true,
         hideIfLogged: false,
         route: {
