@@ -11,7 +11,7 @@ global.iios_iiost = function(Vue) {
     // EXEAMPLE
     Vue.prototype.$services.emit('app:menu:add', [
       {
-        path: '/myservicepath',
+        path: '/service-iiost',
         title: 'Iiost Service view',
         icon: 'view_comfy',
         service: true,
