@@ -13,11 +13,12 @@ global.iios_iiost = function(Vue) {
       {
         path: '/service-iiost',
         title: 'Iiost Service view',
-        icon: 'view_comfy',
+        svgIcon: '$$service(iiost)/assets/iiost.svg',
         section: 'Services',
         anonymousAccess: true,
         hideIfLogged: false,
         route: {
+          name: 'Iiost',
           path: '/service-iiost',
           component: Iiost
         }
