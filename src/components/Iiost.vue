@@ -18,7 +18,14 @@ export default {
   methods: {
   },
   mounted() {
-
+    // dev
+    // refresh service UI on hot reload
+    this.$services.once('service:up', service => {
+      if (service.name === 'iiost') {
+        localStorage.setItem('HR_PATH', '/service-iiost')
+        window.location.reload()
+      }
+    })
   },
   beforeDestroy() {
 

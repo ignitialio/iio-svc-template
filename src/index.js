@@ -26,11 +26,9 @@ global.iios_iiost = function(Vue) {
     ])
 
     let onServiceDestroy = () => {
-      Vue.prototype.$services.emit('app:menu:remove', [
-        {
-          path: '/service-iiost'
-        }
-      ])
+      Vue.prototype.$services.emit('app:menu:remove', [{
+        path: '/service-iiost'
+      }])
 
       Vue.prototype.$services.emit('service:destroy:iiost:done')
     }
