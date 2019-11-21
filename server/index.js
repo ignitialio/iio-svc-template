@@ -3,8 +3,6 @@ const config = require('./config')
 
 class Iiost extends Service {
   constructor(options) {
-    // set service name before calling super
-    options.name = 'iiost'
     super(options)
   }
 
